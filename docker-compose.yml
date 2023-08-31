@@ -3,13 +3,19 @@ version: '3.8'
 services:
   db:
     image: mysql
-    container_name: iam_authenticator
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
-      - iam_data:/var/lib/mysql
+      - authenticator_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+        reservations:
+          memory: 265m
 
 volumes:
-  iam_data:
+  authenticator_data:
