@@ -1,4 +1,4 @@
-package com.rhein.iam.authenticator.domain.model;
+package com.rhein.authenticator.domain.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
