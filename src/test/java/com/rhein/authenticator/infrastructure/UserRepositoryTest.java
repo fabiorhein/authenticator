@@ -29,7 +29,7 @@ class UserRepositoryTest {
         User userToBeSave = UserCreator.createUserToBeSave();
         User savedUser = userRepository.save(userToBeSave);
         String username = savedUser.getUsername();
-        User userByUsername = userRepository.findByUsername(username);
+        User userByUsername = userRepository.findByUsername(username).get();
         Assertions.assertThat(savedUser.getId()).isNotNull();
         Assertions.assertThat(savedUser.getUsername())
                 .isNotNull()

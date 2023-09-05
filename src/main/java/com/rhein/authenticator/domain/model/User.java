@@ -1,5 +1,6 @@
 package com.rhein.authenticator.domain.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -18,6 +19,7 @@ import java.util.Collection;
 @NoArgsConstructor
 public class User extends BaseEntity implements UserDetails {
     private String fullName;
+    @Column(unique = true)
     private String username;
     private String password;
     private String authorities;

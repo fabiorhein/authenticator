@@ -25,8 +25,12 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody UserRequestPostBody userRequestPostBody){
-        return ResponseEntity.ok(userService.save(userRequestPostBody));
+    public ResponseEntity<Object> register(@RequestBody UserRequestPostBody userRequestPostBody){
+        try {
+            return ResponseEntity.ok(userService.save(userRequestPostBody));
+        } catch (Exception ex) {
+            return ResponseEntity.status(400).body(ex.getMessage());
+        }
     }
 
     @PostMapping("/authenticate")
@@ -47,7 +51,6 @@ public class AuthController {
             }
             return ResponseEntity.status(400).body("Error authenticating");
         } catch (Exception ex) {
-            System.out.println(ex);
             return ResponseEntity.status(400).body(ex.getMessage());
         }
     }
